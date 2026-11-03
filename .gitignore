@@ -1,0 +1,33 @@
+# Dependencies & builds
+node_modules/
+web/dist/
+native/.build/
+native/.swiftpm/
+dist/
+*.dmg
+# Blender autosaves / renders
+*.blend1
+*.blend@
+film/renders/segments/
+film/renders/frames/
+film/captures/raw/
+# macOS
+.DS_Store
+# Local env
+.env
+*.log
+windows/src/shared/
+windows/release/
+windows/dist/
+
+# Never publish
+__pycache__/
+*.pyc
+film/renders/*.txt
+film/renders/log_*
+# Large media ship as GitHub release assets
+film/IP-SHIFT-LAUNCH*.mp4
+film/audio/*.wav
+release-assets/
+film/renders/part_*.mp4
+windows/build/*.ico

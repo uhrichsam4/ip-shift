@@ -1,0 +1,185 @@
+/* IP SHIFT design tokens — mirrors DESIGN.md §3–§10. tokens.ts holds the same values for GSAP / Three. */
+:root {
+  /* colour */
+  --void: #03050a;
+  --bg: #060912;
+  --navy-900: #070c1c;
+  --navy-800: #0a1228;
+  --navy-700: #0e1a38;
+  --graphite-900: #0b0e14;
+  --graphite-800: #11151d;
+  --graphite-700: #171c26;
+  --graphite-600: #202734;
+  --line-1: rgba(148, 178, 255, 0.08);
+  --line-2: rgba(148, 178, 255, 0.14);
+  --line-3: rgba(148, 178, 255, 0.26);
+  --text-1: #f3f6fc;
+  --text-2: #a6b1c8;
+  --text-3: #76829c;
+  --text-4: #4a546b;
+  --blue-500: #2f6bff;
+  --blue-400: #4c86ff;
+  --blue-300: #8aaeff;
+  --cyan-400: #35d6ff;
+  --cyan-300: #7be6ff;
+  --cyan-200: #c2f5ff;
+  --violet-500: #7a4dff;
+  --violet-400: #9a73ff;
+  --success: #2fd98b;
+  --warning: #ffb547;
+  --danger: #ff4d6d;
+
+  /* themeable roles */
+  --primary: var(--blue-500);
+  --primary-hover: var(--blue-400);
+  --live: var(--cyan-400);
+  --surface-raised: var(--navy-800);
+  --surface-active: var(--navy-700);
+  --accent: var(--violet-500);
+
+  /* type */
+  --font-display: 'Unbounded Variable', 'Unbounded', system-ui, sans-serif;
+  --font-ui: system-ui, -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --font-data: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* spacing */
+  --sp-0_5: 2px; --sp-1: 4px; --sp-1_5: 6px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+  --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px; --sp-20: 80px;
+  --sidebar-w: 232px;
+  --panel-pad: 20px;
+  --gutter: 24px;
+  --safe-top: 52px;
+
+  /* radius */
+  --r-xs: 6px; --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px; --r-2xl: 28px; --r-pill: 999px;
+
+  /* glass */
+  --glass-1-bg: linear-gradient(180deg, rgba(14, 21, 44, 0.84), rgba(6, 10, 22, 0.9));
+  --glass-blur: none; /* no backdrop blur over the live WebGL canvas (re-blurred every frame in WebKit) */
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --glass-2-tint: rgba(47, 107, 255, 0.14);
+  --glass-2-border: rgba(76, 134, 255, 0.4);
+  --glass-3-bg: rgba(10, 22, 58, 0.55);
+  --glass-3-border: rgba(90, 150, 255, 0.45);
+  --sidebar-bg: linear-gradient(180deg, rgba(10, 19, 48, 0.92) 0%, rgba(7, 12, 28, 0.92) 60%, rgba(6, 10, 22, 0.92) 100%);
+
+  /* shadow / glow */
+  --e1: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --e2: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+  --e3: 0 24px 60px -20px rgba(0, 0, 0, 0.72);
+  --e4: 0 40px 100px -30px rgba(0, 0, 0, 0.85);
+  --glow-s: 0 0 12px rgba(47, 107, 255, 0.35);
+  --glow-m: 0 0 32px rgba(47, 107, 255, 0.4);
+  --glow-l: 0 0 64px rgba(53, 214, 255, 0.35);
+
+  /* motion */
+  --d-instant: 80ms; --d-micro: 140ms; --d-fast: 200ms; --d-base: 320ms; --d-moderate: 450ms;
+  --d-slow: 640ms; --d-deliberate: 900ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-exit: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --ease-camera: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-press: cubic-bezier(0.3, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.36, 0.64, 1);
+
+  --noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='1'/></svg>");
+}
+
+[data-theme='graphite'] {
+  --navy-900: #0b0e14;
+  --navy-800: #11151d;
+  --navy-700: #171c26;
+  --primary: var(--cyan-400);
+  --primary-hover: var(--cyan-300);
+  --glass-1-bg: linear-gradient(180deg, rgba(24, 28, 37, 0.86), rgba(10, 13, 19, 0.9));
+  --glass-2-tint: rgba(53, 214, 255, 0.1);
+  --glass-2-border: rgba(53, 214, 255, 0.36);
+  --sidebar-bg: linear-gradient(180deg, rgba(20, 24, 33, 0.94) 0%, rgba(11, 14, 20, 0.94) 60%, rgba(8, 10, 15, 0.94) 100%);
+  --glow-s: 0 0 12px rgba(53, 214, 255, 0.3);
+  --glow-m: 0 0 32px rgba(53, 214, 255, 0.32);
+}
+
+[data-theme='aurora'] {
+  --accent: var(--violet-400);
+  --glass-2-tint: rgba(122, 77, 255, 0.14);
+  --glass-2-border: rgba(154, 115, 255, 0.42);
+  --sidebar-bg: linear-gradient(180deg, rgba(22, 16, 56, 0.92) 0%, rgba(9, 11, 32, 0.92) 60%, rgba(6, 9, 22, 0.92) 100%);
+  --glow-m: 0 0 32px rgba(122, 77, 255, 0.32);
+}
+
+/* ---------- global ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background: var(--void);
+  color: var(--text-1);
+  font: 400 13px/18px var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+button:disabled { cursor: default; }
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--cyan-300);
+  outline-offset: 2px;
+  box-shadow: var(--glow-s);
+}
+.mono, code { font-family: var(--font-data) !important; font-variant-numeric: tabular-nums slashed-zero; }
+.selectable { user-select: text; -webkit-user-select: text; }
+::selection { background: rgba(47, 107, 255, 0.4); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 999px; border: 3px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: var(--line-3); background-clip: padding-box; border: 3px solid transparent; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* type roles */
+.t-micro { font: 600 10px/12px var(--font-ui); letter-spacing: 0.14em; text-transform: uppercase; }
+.t-caption { font: 500 11px/14px var(--font-ui); letter-spacing: 0.04em; }
+.t-body-s { font: 400 12px/16px var(--font-ui); }
+.t-body { font: 400 13px/18px var(--font-ui); }
+.t-body-l { font: 400 15px/22px var(--font-ui); }
+.t-title-s { font: 600 15px/20px var(--font-ui); }
+.t-title { font: 600 18px/24px var(--font-ui); letter-spacing: -0.005em; }
+.t-headline { font: 600 24px/30px var(--font-display); letter-spacing: -0.01em; }
+.t-display { font: 600 40px/44px var(--font-display); letter-spacing: -0.015em; }
+.t-data-l { font: 500 22px/26px var(--font-data); letter-spacing: -0.01em; font-variant-numeric: tabular-nums slashed-zero; }
+.t-hero-data { font: 300 64px/68px var(--font-data); letter-spacing: -0.03em; font-variant-numeric: tabular-nums slashed-zero; }
+.t-button-xl { font: 700 30px/34px var(--font-display); letter-spacing: 0.03em; }
+.grad-num { background: linear-gradient(180deg, var(--text-1), #bfd0f0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* glass recipes */
+.glass-1 {
+  position: relative;
+  isolation: isolate; /* pseudo layers below (z-index:-1) stay above the fill but behind text */
+  background: var(--glass-1-bg);
+  border: 1px solid var(--line-2);
+  box-shadow: var(--glass-highlight), var(--e2);
+}
+.glass-1::after, .glass-2::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
+  background: linear-gradient(180deg, rgba(138,174,255,.06), transparent 34%);
+}
+.glass-1::before, .glass-2::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
+  background-image: var(--noise); opacity: 0.025;
+}
+.glass-2 {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(var(--glass-2-tint), var(--glass-2-tint)), var(--glass-1-bg);
+  border: 1px solid var(--glass-2-border);
+  box-shadow: var(--glass-highlight);
+}
+
+@keyframes shimmer { from { background-position: -200px 0; } to { background-position: 200px 0; } }
+.skeleton {
+  display: inline-block; height: 0.9em; min-width: 7ch; border-radius: 4px; vertical-align: middle;
+  background: linear-gradient(90deg, rgba(148,178,255,.06) 0, rgba(148,178,255,.14) 50%, rgba(148,178,255,.06) 100%);
+  background-size: 400px 100%; animation: shimmer 1.4s linear infinite;
+}
+[data-reduced-motion='true'] .skeleton { animation: none; }

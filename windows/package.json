@@ -1,0 +1,81 @@
+{
+  "name": "ip-shift-windows",
+  "private": true,
+  "version": "1.0.0",
+  "description": "IP SHIFT for Windows (Electron shell + Win32 networking backend)",
+  "author": "IP SHIFT",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "mkdir -p src/shared && cp ../web/src/bridge/protocol.ts src/shared/protocol.ts && tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test dist/test/",
+    "start": "npm run build && electron .",
+    "dist:win": "bash ../scripts/build-windows.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "koffi": "^2.16.3"
+  },
+  "build": {
+    "appId": "com.ipshift.app",
+    "productName": "IP SHIFT",
+    "npmRebuild": false,
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**",
+      "package.json",
+      "!dist/test/**",
+      "!node_modules/koffi/build/koffi/{darwin,linux,freebsd,openbsd,musl}_*/**",
+      "!node_modules/koffi/build/koffi/win32_ia32/**",
+      "!node_modules/koffi/{src,vendor,doc}/**"
+    ],
+    "asarUnpack": [
+      "node_modules/koffi/build/koffi/win32_*/**"
+    ],
+    "extraResources": [
+      {
+        "from": "../web/dist",
+        "to": "web",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "IP SHIFT",
+      "artifactName": "IP-SHIFT-Setup-${version}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "IP-SHIFT-Portable-${version}-${arch}.${ext}"
+    }
+  }
+}
